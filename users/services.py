@@ -9,6 +9,12 @@ if TYPE_CHECKING:
     from .models import User
 
 
+"""
+A class that represents a user's session, which is used to authenticate the user 
+and keep track of their login status in the application.
+"""
+
+
 @dataclasses.dataclass
 class UserDataClass:
     first_name: str
@@ -26,6 +32,11 @@ class UserDataClass:
             password=user.password,
             id=user.id,
         )
+
+
+"""
+JWT Token Structure
+"""
 
 
 def create_user(user: "UserDataClass") -> "UserDataClass":

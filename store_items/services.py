@@ -13,6 +13,9 @@ if TYPE_CHECKING:
 
 @dataclasses.dataclass
 class OrderDataClass:
+    """
+    Order Data Class for creating orders and updating them
+    """
     item: str
     quantity: int
     notes: str
@@ -36,6 +39,11 @@ class OrderDataClass:
         )
 
 
+"""
+Functions to handle CRUD operations
+"""
+
+
 def create_order(user, order: "OrderDataClass") -> "OrderDataClass":
     new_order = order_models.Order.objects.create(
         user=user,
@@ -51,7 +59,6 @@ def create_order(user, order: "OrderDataClass") -> "OrderDataClass":
 
 
 def get_orders(user) -> list["OrderDataClass"]:
-
     filtered_orders = order_models.Order.objects.filter(user=user)
 
     orders_list = [OrderDataClass.from_instance(
@@ -61,7 +68,9 @@ def get_orders(user) -> list["OrderDataClass"]:
 
 
 def get_order_details(order_id: int) -> "OrderDataClass":
-
+    """
+    Get a single order by ID and returns it as an object with all the details of that particular order
+    """
     order_detail = get_object_or_404(order_models.Order, pk=order_id)
 
     return OrderDataClass.from_instance(order_detail)
@@ -72,8 +81,6 @@ def update_order(user: "User", order: "OrderDataClass", order_id: int) -> "Order
 
     if (retrieved_order.user.id != user.id):
         raise exceptions.PermissionDenied("Access denied!")
-
-    # retrieved_order.objects.content = order.content
 
     retrieved_order.item = order.item
     retrieved_order.quantity = order.quantity

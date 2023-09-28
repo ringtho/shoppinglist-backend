@@ -3,6 +3,9 @@ from . import services
 
 
 class UserSerializer(serializers.Serializer):
+    """
+    User Serializer for user registration and login
+    """
     id = serializers.IntegerField(read_only=True)
     first_name = serializers.CharField()
     last_name = serializers.CharField()

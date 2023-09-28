@@ -46,7 +46,6 @@ class UserManager(auth_models.BaseUserManager):
         )
 
         user.save()
-        print(user)
 
         return user
 

@@ -17,6 +17,10 @@ class RegisterAPI(views.APIView):
 
 
 class LoginAPI(views.APIView):
+    """
+    This class handles the login functionality of a User and returns an 
+    access token if successful or raises 401 error otherwise
+    """
 
     def post(self, request):
         email = request.data["email"]
@@ -58,6 +62,10 @@ class UserAPI(views.APIView):
 
 
 class LogoutAPI(views.APIView):
+    """
+    This endpoint logs out the current
+    authenticated user and deletes their cookie
+    """
     authentication_classes = (authentication.CustomUserAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 

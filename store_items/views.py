@@ -9,11 +9,10 @@ class CreateOrderAPI(views.APIView):
     authentication_classes = (authentication.CustomUserAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
 
-    """
-    Create an order for a user.
-    """
-
     def post(self, request):
+        """
+        Create an order for a user.
+        """
         serializer = store_item_serializer.OrderSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -24,11 +23,10 @@ class CreateOrderAPI(views.APIView):
 
         return response.Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-    '''
-    Get all orders by user.
-    '''
-
     def get(self, request):
+        '''
+        Get all orders by user.
+        '''
         user_orders = services.get_orders(request.user)
 
         order_list = store_item_serializer.OrderSerializer(
@@ -47,7 +45,8 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
 
     def get(self, request, order_id):
         """
-        This method retrieves the specific order details of the given id and returns it in json format if found else raises 404 error code.
+        This method retrieves the specific order details of the given id and 
+        returns it in json format if found else raises 404 error code.
         """
         order_details_raw = services.get_order_details(
             order_id=order_id)
@@ -58,6 +57,10 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
         return response.Response(data=order_list_serialized.data, status=status.HTTP_200_OK)
 
     def put(self, request, order_id):
+        """
+        This method updates an order using the specific order details of the given id 
+        and returns it in json format if found else raises 404 error code.
+        """
         serializer = store_item_serializer.OrderSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -69,6 +72,11 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
         return response.Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, order_id):
+        """
+        This method deletes a particular order from database by its unique
+        identifier i.e., Order Id provided as parameter. If not present then
+        raises HTTP Not Found Error with appropriate message.
+        """
         order_delete = services.delete_order(
             user=request.user, order_id=order_id)
 

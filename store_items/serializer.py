@@ -4,6 +4,9 @@ from . import services as store_item_service
 
 
 class OrderSerializer(serializers.Serializer):
+    """
+    Order Serializer for the order model
+    """
     id = serializers.IntegerField(read_only=True)
     user = user_serializer.UserSerializer(read_only=True)
     item = serializers.CharField()
