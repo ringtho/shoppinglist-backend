@@ -40,7 +40,6 @@ class LoginAPI(views.APIView):
 
         resp.set_cookie(key="jwt", value=token, httponly=True)
         resp.status_code = 200
-        resp.status_text = "Ok"
 
         return resp
 
