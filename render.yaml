@@ -1,14 +1,14 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: shoppingAPI
+    databaseName: db.sqlite3
+    user: shoppingAPI
 
 services:
   - type: web
-    name: mysite
+    name: shoppingAPI
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    startCommand: "gunicorn shoppingAPI.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
