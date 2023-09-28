@@ -1,16 +1,4 @@
 databases:
-<<<<<<< HEAD
-  - name: shoppingAPI
-    databaseName: db.sqlite3
-    user: shoppingAPI
-
-services:
-  - type: web
-    name: shoppingAPI
-    runtime: python
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn shoppingAPI.wsgi:application"
-=======
   - name: mysite
     databaseName: mysite
     user: mysite
@@ -21,11 +9,10 @@ services:
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn mysite.wsgi:application"
->>>>>>> 20b2fe9 (feat: Create yaml file)
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: shoppingAPI
+          name: mysite
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
