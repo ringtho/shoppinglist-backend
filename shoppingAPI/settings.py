@@ -65,10 +65,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-)
+CORS_ALLOWED_ORIGINS = [
+    "https://domain.com",
+    "https://api.domain.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000"
+]
 
 ROOT_URLCONF = 'shoppingAPI.urls'
 
@@ -95,19 +97,10 @@ WSGI_APPLICATION = 'shoppingAPI.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-
-    # live config
-    'default': dj_database_url.config(
-        # # Feel free to alter this value to suit your needs.
-        # default='postgresql://postgres:postgres@localhost:5432/mysite',
-        default='postgresql://postgres:postgres@localhost:5432/shoppingAPI',
-        conn_max_age=600,
-    )
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
