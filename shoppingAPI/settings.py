@@ -106,7 +106,6 @@ DATABASES = {
         # default='postgresql://postgres:postgres@localhost:5432/mysite',
         default='postgresql://postgres:postgres@localhost:5432/shoppingAPI',
         conn_max_age=600,
-        conn_health_checks=True,
     )
 
 }
