@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5%*rhfdwc24*dxv__0wnm45r#9#&6)n_tb2od-7ic3jk+!$bk#'
+JWT_SECRET = 'subscribetobuzz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'users'
+    'users',
+    'store_items'
 ]
 
 MIDDLEWARE = [
