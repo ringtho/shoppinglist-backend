@@ -30,7 +30,7 @@ JWT_SECRET = 'subscribetobuzz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'Render' not in os.environ  # production ready
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Get web service host when debug = True
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
