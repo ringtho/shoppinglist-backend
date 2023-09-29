@@ -40,8 +40,8 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
     This class is used to retrieve, update or delete orders based on ID.
     """
 
-    authentication_classes = (authentication.CustomUserAuthentication, )
-    permission_classes = (permissions.IsAuthenticated, )
+    # authentication_classes = (authentication.CustomUserAuthentication, )
+    # permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, order_id):
         """
