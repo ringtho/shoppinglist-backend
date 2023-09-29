@@ -6,8 +6,8 @@ from . import services
 
 
 class CreateOrderAPI(views.APIView):
-    # authentication_classes = (authentication.CustomUserAuthentication, )
-    # permission_classes = (permissions.IsAuthenticated, )
+    authentication_classes = (authentication.CustomUserAuthentication, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request):
         """
@@ -27,6 +27,7 @@ class CreateOrderAPI(views.APIView):
         '''
         Get all orders by user.
         '''
+        print('request:', request)
         user_orders = services.get_orders(request.user)
 
         order_list = store_item_serializer.OrderSerializer(
@@ -40,8 +41,8 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
     This class is used to retrieve, update or delete orders based on ID.
     """
 
-    # authentication_classes = (authentication.CustomUserAuthentication, )
-    # permission_classes = (permissions.IsAuthenticated, )
+    authentication_classes = (authentication.CustomUserAuthentication, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def get(self, request, order_id):
         """
