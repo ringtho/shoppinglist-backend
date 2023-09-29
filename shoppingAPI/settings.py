@@ -71,6 +71,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost:3000",
     "http://127.0.0.1:9000",
+    "https://shopping-todo.netlify.app",
     "https://shoppingapi-d0lf.onrender.com"
 ]
 
