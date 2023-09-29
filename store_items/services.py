@@ -60,7 +60,7 @@ def create_order(user, order: "OrderDataClass") -> "OrderDataClass":
 
 def get_orders(user) -> list["OrderDataClass"]:
     # filtered_orders = order_models.Order.objects.filter(user=user)
-    filtered_orders = order_models.Order.objects
+    filtered_orders = order_models.Order.objects.all()
 
     orders_list = [OrderDataClass.from_instance(
         order_model=order) for order in filtered_orders]
