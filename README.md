@@ -1,6 +1,6 @@
 # Shopping API
 
-The Shopping API is a Django project designed to help users maintain a list of items they intend to purchase from a shopping store. This project provides a robust API for creating, updating, and managing shopping lists conveniently.
+The Shopping API is a Django project designed to help users maintain a list of items they intend to purchase from a shopping store. This project provides a robust API for creating, updating, and managing shopping lists conveniently. It also includes features for user management.
 
 ## Features
 
@@ -12,22 +12,26 @@ The Shopping API is a Django project designed to help users maintain a list of i
 
 - Mark Items as Purchased: Items can be marked as purchased to keep track of what has already been bought.
 
+- User Management: Users can sign up, login, manage their orders, and logout when done.
+
 ### Getting Started
 
 #### Prerequisites
 
 - Python 3.x
 - Django
-- Django Rest Framework
+- Django Rest Framework... <b><i>(see requirements.txt for complete list)</i></b>
 
 #### Installation
 
 - Clone the repository:
 
 ```
-git clone https://github.com/your-username/shopping-api.git
-cd shopping-api
+git clone https://github.com/ringtho/shoppinglist-backend.git
+cd shoppinglist-backend
 ```
+
+- Create and activate a virtual environment using [this guide](https://docs.python.org/3/library/venv.html)
 
 - Install the required packages:
 
@@ -38,22 +42,22 @@ pip install -r requirements.txt
 - Apply migrations:
 
 ```
-python manage.py migrate
+python3 manage.py migrate
 ```
 
 - Start the development server:
 
 ```
-python manage.py runserver
+python3 manage.py runserver [port]
 ```
 
-The API will be accessible at http://127.0.0.1:8000/.
+The API will be accessible at http://127.0.0.1:8000/ or any port specified above
 
 ### Usage
 
 #### 1. Authentication:
 
-- The API supports token-based authentication. Obtain a token by sending a POST request to /api/token/ with your username and password.
+- The API supports token-based authentication. Obtain a token by sending a POST request to /api/v1/login/ with your username and password.
 
 #### 2. Endpoints:
 
@@ -69,7 +73,7 @@ The API will be accessible at http://127.0.0.1:8000/.
 - Create Shopping List:
 
 ```
-curl -X POST -H "Authorization: Bearer <your_token>" -d "name=Groceries" http://127.0.0.1:8000/api/shopping-lists/
+curl -X POST -H "Authorization: Bearer <your_token>" -d "name=Groceries" http://127.0.0.1:8000/api/v1/orders/
 ```
 
 - Add Item:
