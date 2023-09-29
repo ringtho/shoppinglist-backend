@@ -27,6 +27,7 @@ class CreateOrderAPI(views.APIView):
         '''
         Get all orders by user.
         '''
+        # user_orders = services.get_orders(request.user)
         user_orders = services.get_orders(request.user)
 
         order_list = store_item_serializer.OrderSerializer(
