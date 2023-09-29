@@ -70,7 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://api.domain.com",
     "http://localhost:8080",
     "http://127.0.0.1:9000",
-    "https://shoppingapi-d0lf.onrender.com/"
+    "https://shoppingapi-d0lf.onrender.com"
 ]
 
 ROOT_URLCONF = 'shoppingAPI.urls'
