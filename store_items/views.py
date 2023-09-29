@@ -6,8 +6,8 @@ from . import services
 
 
 class CreateOrderAPI(views.APIView):
-    authentication_classes = (authentication.CustomUserAuthentication, )
-    permission_classes = (permissions.IsAuthenticated, )
+    # authentication_classes = (authentication.CustomUserAuthentication, )
+    # permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request):
         """
@@ -27,7 +27,6 @@ class CreateOrderAPI(views.APIView):
         '''
         Get all orders by user.
         '''
-        # user_orders = services.get_orders(request.user)
         user_orders = services.get_orders(request.user)
 
         order_list = store_item_serializer.OrderSerializer(
