@@ -23,6 +23,13 @@ class LoginAPI(views.APIView):
     """
 
     def post(self, request):
+
+        request_data = request.data
+
+        if not request_data:
+            raise exceptions.PermissionDenied(
+                "Provide login credentials.", status.HTTP_403_FORBIDDEN)
+
         email = request.data["email"]
         password = request.data["password"]
 

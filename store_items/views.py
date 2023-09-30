@@ -52,7 +52,7 @@ class RetrieveUpdateDeleteOrdersAPI(views.APIView):
         returns it in json format if found else raises 404 error code.
         """
         order_details_raw = services.get_order_details(
-            order_id=order_id)
+            request.user, order_id=order_id)
 
         order_list_serialized = store_item_serializer.OrderSerializer(
             order_details_raw)

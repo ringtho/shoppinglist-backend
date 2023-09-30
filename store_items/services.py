@@ -67,13 +67,19 @@ def get_orders(user) -> list["OrderDataClass"]:
     return orders_list
 
 
-def get_order_details(order_id: int) -> "OrderDataClass":
+def get_order_details(user: "User", order_id: int) -> "OrderDataClass":
     """
     Get a single order by ID and returns it as an object with all the details of that particular order
     """
     order_detail = get_object_or_404(order_models.Order, pk=order_id)
 
-    return OrderDataClass.from_instance(order_detail)
+    order_instance = OrderDataClass.from_instance(order_detail)
+
+    if order_instance.user.email != user.email:
+        raise exceptions.PermissionDenied(
+            detail="You don't have permission to carry out this action", code=status.HTTP_403_FORBIDDEN)
+
+    return order_instance
 
 
 def update_order(user: "User", order: "OrderDataClass", order_id: int) -> "OrderDataClass":

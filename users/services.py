@@ -57,6 +57,8 @@ def create_user(user: "UserDataClass") -> "UserDataClass":
 def user_selector(email: str) -> "User":
     user = models.User.objects.filter(email=email).first()
 
+    print('login user', user)
+
     return user
 
 
