@@ -14,3 +14,6 @@ class Order(models.Model):
     is_completed = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_date"]
