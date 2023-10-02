@@ -48,10 +48,9 @@ class LoginAPI(views.APIView):
         resp.set_cookie(key="jwt", value=token, httponly=True)
         resp.status_code = 200
         resp.data = {
-            "token": token
+            "token": token,
+            "user": f"{user.first_name} {user.last_name}"
         }
-
-        print('final resp', resp)
 
         return resp
 

@@ -69,4 +69,4 @@ class User(auth_models.AbstractUser):
     REQUIRED_FIELDS = ["first_name", "last_name"]
 
     def __str__(self) -> str:
-        return f"{self.email, self.first_name, self.last_name}"
+        return f"{self.email}"
