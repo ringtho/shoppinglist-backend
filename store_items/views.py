@@ -27,9 +27,6 @@ class CreateOrderAPI(views.APIView):
         '''
         Get all orders by user.
         '''
-        print('request meta HTTP_COOKIE:', request.META.get('HTTP_COOKIE'))
-        print('request meta user:', request.META.get('user'))
-        print('request user:', request.user)
         user_orders = services.get_orders(request.user)
 
         order_list = store_item_serializer.OrderSerializer(

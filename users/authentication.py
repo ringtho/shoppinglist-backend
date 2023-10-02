@@ -13,21 +13,20 @@ class CustomUserAuthentication(authentication.BaseAuthentication):
         token = request.COOKIES.get(
             "jwt") or request.META.get('HTTP_AUTHORIZATION')
 
-        print('get my token', token)
-
         if not token:
             return None
+
+        if ('Bearer' in token) or (str(token).startswith('Bearer')):
+            token = str(token).replace('Bearer', '').strip()
 
         try:
             payload = jwt.decode(
                 token, settings.JWT_SECRET, algorithms=['HS256'])
-            print('get my payload', payload)
 
         except:
             raise exceptions.AuthenticationFailed("Unauthorized")
 
         user = models.User.objects.filter(id=payload["id"]).first()
-        print('get my user', user)
 
         return (user, None)
 
